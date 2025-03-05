@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D93344B22B96CDB700EA2BF9 /* PixProStatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93344B12B96CDB700EA2BF9 /* PixProStatsApp.swift */; };
+		D93344B42B96CDB700EA2BF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93344B32B96CDB700EA2BF9 /* ContentView.swift */; };
+		D93344B62B96CDBA00EA2BF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93344B52B96CDBA00EA2BF9 /* Assets.xcassets */; };
+		D93344BA2B96CDBA00EA2BF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93344B92B96CDBA00EA2BF9 /* Preview Assets.xcassets */; };
+		D94189BB2D691B2900F0E677 /* PitchingStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94189BA2D691B2900F0E677 /* PitchingStats.swift */; };
+		D94189BD2D691BEA00F0E677 /* BattingStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94189BC2D691BEA00F0E677 /* BattingStats.swift */; };
+		D94189BF2D6933E600F0E677 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94189BE2D6933E600F0E677 /* PreviewData.swift */; };
+		D94189CB2D697F6E00F0E677 /* SwiftUIFontIcon in Frameworks */ = {isa = PBXBuildFile; productRef = D94189CA2D697F6E00F0E677 /* SwiftUIFontIcon */; };
+		D947A4B82D66C5A900186C07 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D947A4B72D66C5A900186C07 /* Extensions.swift */; };
+		D99275E42D74200C00F19F31 /* Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99275E32D74200C00F19F31 /* Division.swift */; };
+		D99275E62D74269600F19F31 /* Conference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99275E52D74269600F19F31 /* Conference.swift */; };
+		D9E387CA2D6AAA7800236FE5 /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E387C92D6AAA7800236FE5 /* League.swift */; };
+		D9E387D62D6AE92400236FE5 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E387D52D6AE92400236FE5 /* Player.swift */; };
+		D9E387D82D6AE94E00236FE5 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E387D72D6AE94E00236FE5 /* Season.swift */; };
+		D9E387DA2D6AE97500236FE5 /* Awards.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E387D92D6AE97500236FE5 /* Awards.swift */; };
+		D9E387DC2D6AE99C00236FE5 /* Playoffs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E387DB2D6AE99C00236FE5 /* Playoffs.swift */; };
+		D9E387DE2D6AE9AF00236FE5 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E387DD2D6AE9AF00236FE5 /* Series.swift */; };
+		D9E387E02D6AE9FF00236FE5 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E387DF2D6AE9FF00236FE5 /* Game.swift */; };
+		D9E387E22D6AEA2000236FE5 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E387E12D6AEA2000236FE5 /* Record.swift */; };
+		D9E387E42D6AEA3600236FE5 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E387E32D6AEA3600236FE5 /* Team.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D93344AE2B96CDB700EA2BF9 /* PixProStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixProStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D93344B12B96CDB700EA2BF9 /* PixProStatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixProStatsApp.swift; sourceTree = "<group>"; };
+		D93344B32B96CDB700EA2BF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D93344B52B96CDBA00EA2BF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D93344B72B96CDBA00EA2BF9 /* PixProStats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PixProStats.entitlements; sourceTree = "<group>"; };
+		D93344B92B96CDBA00EA2BF9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D94189BA2D691B2900F0E677 /* PitchingStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingStats.swift; sourceTree = "<group>"; };
+		D94189BC2D691BEA00F0E677 /* BattingStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattingStats.swift; sourceTree = "<group>"; };
+		D94189BE2D6933E600F0E677 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
+		D947A4B72D66C5A900186C07 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D99275E32D74200C00F19F31 /* Division.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Division.swift; sourceTree = "<group>"; };
+		D99275E52D74269600F19F31 /* Conference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conference.swift; sourceTree = "<group>"; };
+		D9E387C92D6AAA7800236FE5 /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
+		D9E387D52D6AE92400236FE5 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D9E387D72D6AE94E00236FE5 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		D9E387D92D6AE97500236FE5 /* Awards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Awards.swift; sourceTree = "<group>"; };
+		D9E387DB2D6AE99C00236FE5 /* Playoffs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playoffs.swift; sourceTree = "<group>"; };
+		D9E387DD2D6AE9AF00236FE5 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
+		D9E387DF2D6AE9FF00236FE5 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		D9E387E12D6AEA2000236FE5 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		D9E387E32D6AEA3600236FE5 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D99275EF2D779AD700F19F31 /* PlayoffsViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = PlayoffsViews; sourceTree = "<group>"; };
+		D99275F72D779B1700F19F31 /* SeasonViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SeasonViews; sourceTree = "<group>"; };
+		D99275F82D779B6000F19F31 /* TeamViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TeamViews; sourceTree = "<group>"; };
+		D99275F92D779B8800F19F31 /* PlayerViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = PlayerViews; sourceTree = "<group>"; };
+		D99275FA2D779BDF00F19F31 /* GameViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = GameViews; sourceTree = "<group>"; };
+		D99275FB2D779C0100F19F31 /* LeagueViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = LeagueViews; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D93344AB2B96CDB700EA2BF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D94189CB2D697F6E00F0E677 /* SwiftUIFontIcon in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D93344A52B96CDB600EA2BF9 = {
+			isa = PBXGroup;
+			children = (
+				D93344B02B96CDB700EA2BF9 /* PixProStats */,
+				D93344AF2B96CDB700EA2BF9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D93344AF2B96CDB700EA2BF9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D93344AE2B96CDB700EA2BF9 /* PixProStats.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D93344B02B96CDB700EA2BF9 /* PixProStats */ = {
+			isa = PBXGroup;
+			children = (
+				D99275FB2D779C0100F19F31 /* LeagueViews */,
+				D99275FA2D779BDF00F19F31 /* GameViews */,
+				D99275F92D779B8800F19F31 /* PlayerViews */,
+				D99275F82D779B6000F19F31 /* TeamViews */,
+				D99275F72D779B1700F19F31 /* SeasonViews */,
+				D99275EF2D779AD700F19F31 /* PlayoffsViews */,
+				D93344B12B96CDB700EA2BF9 /* PixProStatsApp.swift */,
+				D93344B32B96CDB700EA2BF9 /* ContentView.swift */,
+				D93344B52B96CDBA00EA2BF9 /* Assets.xcassets */,
+				D93344B72B96CDBA00EA2BF9 /* PixProStats.entitlements */,
+				D93344B82B96CDBA00EA2BF9 /* Preview Content */,
+				D9E387C92D6AAA7800236FE5 /* League.swift */,
+				D99275E52D74269600F19F31 /* Conference.swift */,
+				D947A4B72D66C5A900186C07 /* Extensions.swift */,
+				D94189BA2D691B2900F0E677 /* PitchingStats.swift */,
+				D9E387D72D6AE94E00236FE5 /* Season.swift */,
+				D94189BC2D691BEA00F0E677 /* BattingStats.swift */,
+				D99275E32D74200C00F19F31 /* Division.swift */,
+				D9E387D52D6AE92400236FE5 /* Player.swift */,
+				D9E387D92D6AE97500236FE5 /* Awards.swift */,
+				D9E387DF2D6AE9FF00236FE5 /* Game.swift */,
+				D9E387E12D6AEA2000236FE5 /* Record.swift */,
+				D9E387DB2D6AE99C00236FE5 /* Playoffs.swift */,
+				D9E387E32D6AEA3600236FE5 /* Team.swift */,
+				D9E387DD2D6AE9AF00236FE5 /* Series.swift */,
+			);
+			path = PixProStats;
+			sourceTree = "<group>";
+		};
+		D93344B82B96CDBA00EA2BF9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D93344B92B96CDBA00EA2BF9 /* Preview Assets.xcassets */,
+				D94189BE2D6933E600F0E677 /* PreviewData.swift */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D93344AD2B96CDB700EA2BF9 /* PixProStats */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D93344BD2B96CDBA00EA2BF9 /* Build configuration list for PBXNativeTarget "PixProStats" */;
+			buildPhases = (
+				D93344AA2B96CDB700EA2BF9 /* Sources */,
+				D93344AB2B96CDB700EA2BF9 /* Frameworks */,
+				D93344AC2B96CDB700EA2BF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D99275EF2D779AD700F19F31 /* PlayoffsViews */,
+				D99275F72D779B1700F19F31 /* SeasonViews */,
+				D99275F82D779B6000F19F31 /* TeamViews */,
+				D99275F92D779B8800F19F31 /* PlayerViews */,
+				D99275FA2D779BDF00F19F31 /* GameViews */,
+				D99275FB2D779C0100F19F31 /* LeagueViews */,
+			);
+			name = PixProStats;
+			packageProductDependencies = (
+				D94189CA2D697F6E00F0E677 /* SwiftUIFontIcon */,
+			);
+			productName = PixProStats;
+			productReference = D93344AE2B96CDB700EA2BF9 /* PixProStats.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D93344A62B96CDB600EA2BF9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					D93344AD2B96CDB700EA2BF9 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = D93344A92B96CDB600EA2BF9 /* Build configuration list for PBXProject "PixProStats" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D93344A52B96CDB600EA2BF9;
+			packageReferences = (
+				D94189C92D697F6E00F0E677 /* XCRemoteSwiftPackageReference "SwiftUIFontIcon" */,
+			);
+			productRefGroup = D93344AF2B96CDB700EA2BF9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D93344AD2B96CDB700EA2BF9 /* PixProStats */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D93344AC2B96CDB700EA2BF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D93344BA2B96CDBA00EA2BF9 /* Preview Assets.xcassets in Resources */,
+				D93344B62B96CDBA00EA2BF9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D93344AA2B96CDB700EA2BF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D99275E62D74269600F19F31 /* Conference.swift in Sources */,
+				D99275E42D74200C00F19F31 /* Division.swift in Sources */,
+				D947A4B82D66C5A900186C07 /* Extensions.swift in Sources */,
+				D94189BF2D6933E600F0E677 /* PreviewData.swift in Sources */,
+				D9E387CA2D6AAA7800236FE5 /* League.swift in Sources */,
+				D9E387DE2D6AE9AF00236FE5 /* Series.swift in Sources */,
+				D93344B42B96CDB700EA2BF9 /* ContentView.swift in Sources */,
+				D9E387DC2D6AE99C00236FE5 /* Playoffs.swift in Sources */,
+				D9E387E42D6AEA3600236FE5 /* Team.swift in Sources */,
+				D9E387E22D6AEA2000236FE5 /* Record.swift in Sources */,
+				D9E387D82D6AE94E00236FE5 /* Season.swift in Sources */,
+				D93344B22B96CDB700EA2BF9 /* PixProStatsApp.swift in Sources */,
+				D94189BB2D691B2900F0E677 /* PitchingStats.swift in Sources */,
+				D9E387E02D6AE9FF00236FE5 /* Game.swift in Sources */,
+				D9E387D62D6AE92400236FE5 /* Player.swift in Sources */,
+				D94189BD2D691BEA00F0E677 /* BattingStats.swift in Sources */,
+				D9E387DA2D6AE97500236FE5 /* Awards.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D93344BB2B96CDBA00EA2BF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D93344BC2B96CDBA00EA2BF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		D93344BE2B96CDBA00EA2BF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PixProStats/PixProStats.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"PixProStats/Preview Content\"";
+				DEVELOPMENT_TEAM = 4QV29SVCD2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pixel Pro Stats";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = NextOfKin.PixProStats;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D93344BF2B96CDBA00EA2BF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PixProStats/PixProStats.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"PixProStats/Preview Content\"";
+				DEVELOPMENT_TEAM = 4QV29SVCD2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pixel Pro Stats";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = NextOfKin.PixProStats;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D93344A92B96CDB600EA2BF9 /* Build configuration list for PBXProject "PixProStats" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D93344BB2B96CDBA00EA2BF9 /* Debug */,
+				D93344BC2B96CDBA00EA2BF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D93344BD2B96CDBA00EA2BF9 /* Build configuration list for PBXNativeTarget "PixProStats" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D93344BE2B96CDBA00EA2BF9 /* Debug */,
+				D93344BF2B96CDBA00EA2BF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D94189C92D697F6E00F0E677 /* XCRemoteSwiftPackageReference "SwiftUIFontIcon" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huybuidac/SwiftUIFontIcon";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D94189CA2D697F6E00F0E677 /* SwiftUIFontIcon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D94189C92D697F6E00F0E677 /* XCRemoteSwiftPackageReference "SwiftUIFontIcon" */;
+			productName = SwiftUIFontIcon;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = D93344A62B96CDB600EA2BF9 /* Project object */;
+}
