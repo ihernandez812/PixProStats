@@ -31,7 +31,7 @@ struct PlayerInfo: View {
                     .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 0, y:5)
                 
                 //MARK Player Stats
-                if(player.posistion == PositionType.PITCHER.rawValue){
+                if(player.position == PositionType.PITCHER.rawValue){
                     PitchingStatsView(player: player, seasonYear: self.seasonYear, teamId: self.teamId)
                     
                 }

@@ -11,7 +11,7 @@ import Foundation
 struct Player: Codable, Identifiable {
     let id, name: String
     let handedness: HandednessType.RawValue
-    let posistion: PositionType.RawValue
+    let position: PositionType.RawValue
     let pitcherType: PitcherType.RawValue
     let designatedHitter: Bool
     let pitchingStats: [PitchingStats]
@@ -19,17 +19,19 @@ struct Player: Codable, Identifiable {
     let isHof: Bool
     
     enum CodingKeys: String, CodingKey {
-        case id, name, handedness, posistion
-        case pitcherType = "pitcher_type"
-        case designatedHitter = "designated_hitter"
-        case pitchingStats = "pitching_stats"
-        case battingStats = "batting_stats"
+        case id, name
+        case position = "fieldingPosition"
+        case handedness = "handed"
+        case pitcherType
+        case designatedHitter
+        case pitchingStats
+        case battingStats
         case isHof = "is_hof"
     }
     
     func getFullPosition() -> String {
-        var fullPosition = PositionType.description(rawValue: self.posistion)
-        if self.posistion == PositionType.PITCHER.rawValue {
+        var fullPosition = PositionType.description(rawValue: self.position)
+        if self.position == PositionType.PITCHER.rawValue {
             fullPosition += ": " + PitcherType.description(rawValue: self.pitcherType)
         }
         else if self.designatedHitter == true{

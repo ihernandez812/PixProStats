@@ -14,15 +14,15 @@ struct Playoffs: Codable {
     let worldSeries: Series
     
     enum CodingKeys: String, CodingKey {
-        case nlWildcard = "nl_wildcard"
-        case alWildcard = "al_wildcard"
-        case nlDivisionalOne = "nl_divisional_one"
-        case alDivisionalOne = "al_divisional_one"
-        case nlDivisionalTwo = "nl_divisional_two"
-        case alDivisionalTwo = "al_divisional_two"
-        case nlChampionship = "nl_championship"
-        case alChampionship = "al_championship"
-        case worldSeries = "world_series"
+        case nlWildcard = "confTwoWildcard"
+        case alWildcard = "confOneWildcard"
+        case nlDivisionalOne = "confTwoSemi0"
+        case alDivisionalOne = "confOneSemi0"
+        case nlDivisionalTwo = "confTwoSemi1"
+        case alDivisionalTwo = "confOneSemi1"
+        case nlChampionship = "confTwoFinal"
+        case alChampionship = "confOneFinal"
+        case worldSeries = "final"
     }
     
     func getPlayoffTeams() -> Set<Int> {

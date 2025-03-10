@@ -18,8 +18,8 @@ struct Game: Codable, Identifiable {
         case id
         case teamOne = "team_one"
         case teamTwo = "team_two"
-        case teamOneScore = "team_one_score"
-        case teamTwoScore = "team_two_score"
+        case teamOneScore = "t0score"
+        case teamTwoScore = "t1score"
         case winner
     }
     

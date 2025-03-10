@@ -14,7 +14,7 @@ struct TeamListAllView: View {
     var body: some View {
         VStack{
             //MARK Teams List
-            let conferences: [Conference] = leagueVM.league?.getConferences() ?? []
+            //let conferences: [Conference] = leagueVM.league?.getConferences() ?? []
             ScrollView{
                 if seasonYear == LeagueViewModel.ALL_TIME {
                     if let allTimeRecords: [Int: Record] = leagueVM.league?.getAllTimeRecords() {
