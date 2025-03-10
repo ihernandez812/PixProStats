@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct PixProStatsApp: App {
-    @StateObject var leagueListVM = LeagueViewModel()
+    @StateObject var leagueVM = LeagueViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(leagueListVM)
+                .environmentObject(leagueVM)
         }
     }
 }

@@ -41,6 +41,12 @@ struct Season: Codable, Identifiable {
         return teamRecord
     }
     
+    func getIsPlayoffTeam(_ teamId: Int) -> Bool {
+        let playoffIds: Set<Int> = self.playoffs.getPlayoffTeams()
+        return playoffIds.contains(teamId)
+        
+    }
+    
     //Need Season to be Identifiable so I made the id the year
     func getYear() -> Int {
         return self.id

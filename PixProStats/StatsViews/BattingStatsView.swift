@@ -11,13 +11,13 @@ struct BattingStatsView: View {
     var player: Player
     var seasonYear: Int?
     var teamId: Int?
-    @EnvironmentObject var leagueListVM: LeagueViewModel
+    @EnvironmentObject var leagueVM: LeagueViewModel
     @State private var selectedOption = LeagueViewModel.ALL_TIME
     
     var body: some View {
         
-        let avaiblableBattingStats: [BattingStats] = leagueListVM.league?.getPlayerBattingStats(player: player, seasonYear: seasonYear, teamId: teamId) ?? []
-        let availableSeasons: [Int] = leagueListVM.league?.getSeasonsToLookFor(player: player, seasonYear: seasonYear, teamId: teamId) ?? []
+        let avaiblableBattingStats: [BattingStats] = leagueVM.league?.getPlayerBattingStats(player: player, seasonYear: seasonYear, teamId: teamId) ?? []
+        let availableSeasons: [Int] = leagueVM.league?.getSeasonsToLookFor(player: player, seasonYear: seasonYear, teamId: teamId) ?? []
         VStack(alignment: .leading, spacing: 2){
             HStack(spacing: 10) {
                 Menu{
@@ -73,6 +73,15 @@ struct BattingStatsView: View {
     }
 }
 
-#Preview {
-    BattingStatsView(player: playerPreviewData)
+struct BattingStatsView_Previews: PreviewProvider {
+    static let leagueViewModel : LeagueViewModel = {
+        let leagueViewModel = LeagueViewModel()
+        leagueViewModel.league = leaguePreviewData
+        return leagueViewModel
+    }()
+    
+    static var previews: some View {
+        BattingStatsView(player: playerPreviewData)
+            .environmentObject(leagueViewModel)
+    }
 }

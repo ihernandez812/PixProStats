@@ -12,12 +12,12 @@ struct PitchingStatsView: View {
     var player: Player
     var seasonYear: Int?
     var teamId: Int?
-    @EnvironmentObject var leagueListVM: LeagueViewModel
+    @EnvironmentObject var leagueVM: LeagueViewModel
     @State private var selectedOption = LeagueViewModel.ALL_TIME
     
     var body: some View {
-        let avaiblablePitchingStats: [PitchingStats] = leagueListVM.league?.getPlayerPitchingStats(player: player, seasonYear: seasonYear, teamId: teamId) ?? []
-        let availableSeasons: [Int] = leagueListVM.league?.getSeasonsToLookFor(player: player, seasonYear: seasonYear, teamId: teamId) ?? []
+        let avaiblablePitchingStats: [PitchingStats] = leagueVM.league?.getPlayerPitchingStats(player: player, seasonYear: seasonYear, teamId: teamId) ?? []
+        let availableSeasons: [Int] = leagueVM.league?.getSeasonsToLookFor(player: player, seasonYear: seasonYear, teamId: teamId) ?? []
         VStack(alignment: .leading, spacing: 2){
             HStack(spacing: 0) {
                 Menu {
@@ -28,7 +28,7 @@ struct PitchingStatsView: View {
                             Text(String(pitchingStats.season)).tag(pitchingStats.season)
                         }
                         Text("All Time").tag(LeagueViewModel.ALL_TIME)
-                    }.font(.footnote)
+                    }
                 } label: {
                     pitchingStatsLabel
                     
@@ -76,6 +76,15 @@ struct PitchingStatsView: View {
     }
 }
 
-#Preview {
-    PitchingStatsView(player: playerPreviewData)
+struct PitchingStatsView_Previews: PreviewProvider {
+    static let leagueViewModel : LeagueViewModel = {
+        let leagueViewModel = LeagueViewModel()
+        leagueViewModel.league = leaguePreviewData
+        return leagueViewModel
+    }()
+    
+    static var previews: some View {
+        PitchingStatsView(player: playerPreviewData)
+            .environmentObject(leagueViewModel)
+    }
 }

@@ -36,15 +36,15 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static let leagueListViewModel : LeagueViewModel = {
-        let leagueListViewModel = LeagueViewModel()
-        leagueListViewModel.league = leaguePreviewData
-        return leagueListViewModel
+    static let leagueViewModel : LeagueViewModel = {
+        let leagueViewModel = LeagueViewModel()
+        leagueViewModel.league = leaguePreviewData
+        return leagueViewModel
     }()
     
     static var previews: some View {
         ContentView()
-            .environmentObject(leagueListViewModel)
+            .environmentObject(leagueViewModel)
         
     }
 }

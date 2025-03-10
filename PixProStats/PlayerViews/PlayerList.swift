@@ -10,14 +10,14 @@ import SwiftUI
 struct PlayerList: View {
     var seasonYear: Int
     var teamId: Int
-    @EnvironmentObject var leagueListVM: LeagueViewModel
+    @EnvironmentObject var leagueVM: LeagueViewModel
     
     var body: some View {
         
         VStack{
             ScrollView {
                 if seasonYear == LeagueViewModel.ALL_TIME && teamId == LeagueViewModel.ALL_TIME {
-                    let allPlayers = leagueListVM.league?.players ?? []
+                    let allPlayers = leagueVM.league?.players ?? []
                     ForEach(allPlayers){ player in
                         let playerId: String = player.id
                         
@@ -28,10 +28,10 @@ struct PlayerList: View {
                     }
                 }
                 else if seasonYear == LeagueViewModel.ALL_TIME  && teamId != LeagueViewModel.ALL_TIME {
-                    if let allTimeTeamPlayers: [String] = leagueListVM.league?.getAllTimeTeamPlayers(teamId: teamId) {
+                    if let allTimeTeamPlayers: [String] = leagueVM.league?.getAllTimeTeamPlayers(teamId: teamId) {
                         ForEach(allTimeTeamPlayers.indices, id: \.self) { i in
                             let playerId = allTimeTeamPlayers[i]
-                            if let player: Player = leagueListVM.league?.getPlayerById(playerId: playerId) {
+                            if let player: Player = leagueVM.league?.getPlayerById(playerId: playerId) {
                                 NavigationLink(destination: PlayerInfo(playerId: playerId, seasonYear: seasonYear, teamId: teamId)){
                                     PlayerRow(player: player)
                                 }
@@ -41,11 +41,11 @@ struct PlayerList: View {
                     }
                 }
                 else{
-                    if let season: Season = leagueListVM.league?.getSeasonByYear(seasonYear: seasonYear) {
+                    if let season: Season = leagueVM.league?.getSeasonByYear(seasonYear: seasonYear) {
                         if let teamSeasonPlayers: [String] = season.teamSeasonPlayers[String(teamId)] {
                             ForEach(teamSeasonPlayers.indices, id: \.self){ i in
                                 let playerId = teamSeasonPlayers[i]
-                                if let player: Player = leagueListVM.league?.getPlayerById(playerId: playerId) {
+                                if let player: Player = leagueVM.league?.getPlayerById(playerId: playerId) {
                                     NavigationLink(destination: PlayerInfo(playerId: playerId, seasonYear: seasonYear, teamId: teamId)){
                                         PlayerRow(player: player)
                                     }
@@ -70,14 +70,14 @@ struct PlayerList: View {
 
 
 struct PlayerList_Previews: PreviewProvider {
-    static let leagueListViewModel : LeagueViewModel = {
-        let leagueListViewModel = LeagueViewModel()
-        leagueListViewModel.league = leaguePreviewData
-        return leagueListViewModel
+    static let leagueViewModel : LeagueViewModel = {
+        let leagueViewModel = LeagueViewModel()
+        leagueViewModel.league = leaguePreviewData
+        return leagueViewModel
     }()
     
     static var previews: some View {
         PlayerList(seasonYear: 2023, teamId: 13)
-            .environmentObject(leagueListViewModel)
+            .environmentObject(leagueViewModel)
     }
 }

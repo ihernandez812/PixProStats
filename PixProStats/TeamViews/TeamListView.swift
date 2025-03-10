@@ -8,16 +8,35 @@
 import SwiftUI
 
 struct TeamListView: View {
-    @EnvironmentObject var leagueListVM: LeagueViewModel
+    @EnvironmentObject var leagueVM: LeagueViewModel
+    @State private var sortType: LeagueSortType = .division
     var body: some View {
         
         VStack(alignment: .leading){
-            Text("All Time Teams")
-                .bold()
-                .padding()
-                .foregroundColor(Color.textColor)
+            HStack{
+                Text("All Time Teams")
+                    .bold()
+                    .padding()
+                    .foregroundColor(Color.textColor)
+                
+                Picker("Season:", selection: $sortType) {
+                    ForEach(LeagueSortType.allCases){ leagueSortType in
+                        Text(leagueSortType.rawValue.capitalized)
+                            .foregroundColor(Color.textColor)
+                    }
+                }
+            }
             
-            TeamList(seasonYear: LeagueViewModel.ALL_TIME)
+            //MARK Seasons List
+            if sortType == .division{
+                TeamListDivisionView(seasonYear: LeagueViewModel.ALL_TIME)
+            }
+            else if sortType == .conference{
+                TeamListConferenceView(seasonYear: LeagueViewModel.ALL_TIME)
+            }
+            else if sortType == .all{
+                TeamListAllView(seasonYear: LeagueViewModel.ALL_TIME)
+            }
         }
         .padding()
         .background(Color.rowColor)
@@ -28,14 +47,14 @@ struct TeamListView: View {
 }
 
 struct TeamListView_Previews: PreviewProvider {
-    static let leagueListViewModel : LeagueViewModel = {
-        let leagueListViewModel = LeagueViewModel()
-        leagueListViewModel.league = leaguePreviewData
-        return leagueListViewModel
+    static let leagueViewModel : LeagueViewModel = {
+        let leagueViewModel = LeagueViewModel()
+        leagueViewModel.league = leaguePreviewData
+        return leagueViewModel
     }()
     
     static var previews: some View {
         TeamListView()
-            .environmentObject(leagueListViewModel)
+            .environmentObject(leagueViewModel)
     }
 }

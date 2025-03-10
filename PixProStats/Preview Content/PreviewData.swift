@@ -35,7 +35,7 @@ var seriesListPreviewData =  [Series](repeating: seriesPreviewData, count: 5)
 
 var playoffsPreviewData = Playoffs(nlWildcard: seriesPreviewData, alWildcard: seriesPreviewData, nlDivisionalOne: seriesPreviewData, alDivisionalOne: seriesPreviewData, nlDivisionalTwo: seriesPreviewData, alDivisionalTwo: seriesPreviewData, nlChampionship: seriesPreviewData, alChampionship: seriesPreviewData, worldSeries: seriesPreviewData)
 
-var awardsPreviewData = Awards(cyYoung: playerPreviewData.id, mvp: playerPreviewData.id)
+var awardsPreviewData = Awards(cyYoung: playerPreviewData.id, mvp: playerPreviewData.id, battingTitle: playerPreviewData.id, homeRunLeader: playerPreviewData.id)
 
 
 var seasonTeamPlayersData = [String: [String]]()

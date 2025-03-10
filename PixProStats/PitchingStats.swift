@@ -67,26 +67,43 @@ struct PitchingStats: Codable, Identifiable {
     }
     
     func getAverage() -> Double {
-        let avg: Double = Double(self.hits) / Double(self.atBats)
-        return  Double(round(1000 * avg) / 1000)
+        var result: Double = 0
+        if self.atBats > 0 && self.hits > 0 {
+            let avg: Double = Double(self.hits) / Double(self.atBats)
+            result = Double(round(1000 * avg) / 1000)
+        }
+        return result
     }
     
     func getEra() -> Double {
-        let inningsPitched: Double = Double(self.inningsOuts) / 3
-        let era: Double = (Double(self.earnedRuns) / inningsPitched) * 9
-        return  Double(round(1000 * era) / 1000)
+        var result: Double = 0
+        if self.inningsOuts > 0 && self.earnedRuns > 0 {
+            let inningsPitched: Double = Double(self.inningsOuts) / 3
+            let era: Double = (Double(self.earnedRuns) / inningsPitched) * 9
+            result = Double(round(1000 * era) / 1000)
+        }
+        return result
     }
     
     func calculateStrikeoutsPerInning() -> Double {
-        let inningsPitched: Double = Double(self.inningsOuts) / 3
-        let strikeoutsPerInning: Double = Double(self.strikeouts) / inningsPitched
-        return  Double(round(1000 * strikeoutsPerInning) / 1000)
+        var result: Double = 0
+        if self.inningsOuts > 0 && self.strikeouts > 0 {
+            let inningsPitched: Double = Double(self.inningsOuts) / 3
+            let strikeoutsPerInning: Double = Double(self.strikeouts) / inningsPitched
+            result =  Double(round(1000 * strikeoutsPerInning) / 1000)
+        }
+        return result
     }
     
     func getWHIP() -> Double {
-        let inningsPitched: Double = Double(self.inningsOuts) / 3
-        let walksPlusHits: Double = Double(self.walks + self.hits)
-        let whip: Double = walksPlusHits / inningsPitched
-        return  Double(round(1000 * whip) / 1000)
+        var result: Double = 0
+        if self.inningsOuts > 0 && self.walks > 0 && self.hits > 0 {
+            let inningsPitched: Double = Double(self.inningsOuts) / 3
+            let walksPlusHits: Double = Double(self.walks + self.hits)
+            let whip: Double = walksPlusHits / inningsPitched
+            result =  Double(round(1000 * whip) / 1000)
+        }
+        return result
+        
     }
 }

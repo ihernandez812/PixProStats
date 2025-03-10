@@ -16,14 +16,14 @@ struct PlayerInfo: View {
     var playerId: String
     var seasonYear: Int?
     var teamId: Int?
-    @EnvironmentObject var leagueListVM: LeagueViewModel
+    @EnvironmentObject var leagueVM: LeagueViewModel
     
     var body: some View {
         
         VStack(alignment: .leading, spacing: 2){
             
             //MARK Player Row
-            if let player: Player = self.leagueListVM.league?.getPlayerById(playerId: self.playerId) {
+            if let player: Player = self.leagueVM.league?.getPlayerById(playerId: self.playerId) {
                 PlayerRow(player: player)
                     .padding()
                     .background(Color.rowColor)
@@ -49,14 +49,14 @@ struct PlayerInfo: View {
 
 
 struct PlayerInfo_Previews: PreviewProvider {
-    static let leagueListViewModel : LeagueViewModel = {
-        let leagueListViewModel = LeagueViewModel()
-        leagueListViewModel.league = leaguePreviewData
-        return leagueListViewModel
+    static let leagueViewModel : LeagueViewModel = {
+        let leagueViewModel = LeagueViewModel()
+        leagueViewModel.league = leaguePreviewData
+        return leagueViewModel
     }()
     
     static var previews: some View {
-        PlayerInfo(playerId: "TIigsxjmbMhmUIS2")
-            .environmentObject(leagueListViewModel)
+        PlayerInfo(playerId: "mpYQS49IkiYBhrjt")
+            .environmentObject(leagueViewModel)
     }
 }

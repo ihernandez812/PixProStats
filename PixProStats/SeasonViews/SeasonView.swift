@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SeasonView: View {
     var seasonYear: Int
-    @EnvironmentObject var leaugeListVM: LeagueViewModel
+    @State private var sortType: LeagueSortType = .division
+    @EnvironmentObject var leagueVM: LeagueViewModel
     
     var body: some View {
         VStack{
@@ -17,6 +18,13 @@ struct SeasonView: View {
                 Text(String(seasonYear) + " Season")
                     .bold()
                     .foregroundColor(Color.textColor)
+                
+                Picker("Season:", selection: $sortType) {
+                    ForEach(LeagueSortType.allCases){ leagueSortType in
+                        Text(leagueSortType.rawValue.capitalized)
+                            .foregroundColor(Color.textColor)
+                    }
+                }
                 
                 Spacer()
                 
@@ -31,7 +39,7 @@ struct SeasonView: View {
                         Text("Post Season")
                     }
                     
-                    let games: [Game] = leaugeListVM.league?.getSeasonByYear(seasonYear: seasonYear).regularSeason ?? []
+                    let games: [Game] = leagueVM.league?.getSeasonByYear(seasonYear: seasonYear).regularSeason ?? []
                     let label: String = String(seasonYear) + " Regular Season"
                     NavigationLink(destination: GameList(games: games, label: label)) {
                         Text("Games")
@@ -43,7 +51,16 @@ struct SeasonView: View {
             .padding(.bottom,0)
             
             //MARK Seasons List
-            TeamList(seasonYear: seasonYear)
+            if sortType == .division{
+                TeamListDivisionView(seasonYear: seasonYear)
+            }
+            else if sortType == .conference{
+                TeamListConferenceView(seasonYear: seasonYear)
+            }
+            else if sortType == .all{
+                TeamListAllView(seasonYear: seasonYear)
+            }
+            
         }
         .padding()
         .background(Color.rowColor)
@@ -60,14 +77,14 @@ struct SeasonView: View {
 
 
 struct Season_Previews: PreviewProvider {
-    static let leagueListViewModel : LeagueViewModel = {
-        let leagueListViewModel = LeagueViewModel()
-        leagueListViewModel.league = leaguePreviewData
-        return leagueListViewModel
+    static let leagueViewModel : LeagueViewModel = {
+        let leagueViewModel = LeagueViewModel()
+        leagueViewModel.league = leaguePreviewData
+        return leagueViewModel
     }()
     
     static var previews: some View {
         SeasonView(seasonYear: 2023)
-            .environmentObject(leagueListViewModel)
+            .environmentObject(leagueViewModel)
     }
 }

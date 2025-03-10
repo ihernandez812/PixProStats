@@ -134,4 +134,16 @@ struct League: Codable {
         
         return playerPitchingStats
     }
+    
+    func getWorldSeriesWinCount(teamId: Int) -> Int {
+        var winCount: Int = 0
+        for season in seasons {
+            let playoffs = season.playoffs
+            let worldSeries = playoffs.worldSeries
+            if worldSeries.winner == teamId {
+                winCount += 1
+            }
+        }
+        return winCount
+    }
 }

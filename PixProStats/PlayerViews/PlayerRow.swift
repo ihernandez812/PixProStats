@@ -16,10 +16,26 @@ struct PlayerRow: View {
         HStack(spacing: 10) {
             VStack(alignment: .leading, spacing: 2){
                 //MARK Player Name
-                Text(String(player.name))
-                    .font(.headline)
-                    .bold()
-                    .lineLimit(1)
+                HStack{
+                    Text(String(player.name))
+                        .font(.headline)
+                        .bold()
+                        .lineLimit(1)
+                    if(player.isHof){
+                        VStack(alignment: .leading, spacing: 2){
+                            //MARK HOF Badge
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .fill(Color.iconColor.opacity(0.3))
+                                .frame(width: 15, height: 15)
+                                .overlay{
+                                    FontIcon.text(.awesome5Solid(code: .star), fontsize: 9, color: Color.iconColor)
+                                }
+                            
+                            
+                            
+                        }
+                    }
+                }
                 HStack {
                     let fullPosition: String = player.getFullPosition()
                     Text(String(fullPosition))
@@ -39,19 +55,7 @@ struct PlayerRow: View {
             
             Spacer()
             
-            if(player.isHof){
-                VStack(alignment: .leading, spacing: 2){
-                    //MARK HOF Badge
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(Color.iconColor.opacity(0.3))
-                        .frame(width: 22, height: 22)
-                        .overlay{
-                            FontIcon.text(.awesome5Solid(code: .star), fontsize: 12, color: Color.iconColor)
-                        }
-                    
-                    
-                }
-            }
+            
         }
         .padding([.top, .bottom], 1)
         .foregroundColor(Color.textColor)

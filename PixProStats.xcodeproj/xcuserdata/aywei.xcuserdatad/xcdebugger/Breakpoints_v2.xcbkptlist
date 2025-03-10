@@ -18,6 +18,36 @@
             endingLineNumber = "47"
             landmarkName = "unknown"
             landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "AF019BD0-076A-4B7E-9091-AC09FC194FE8 - 62c8b9bec5e8eb9e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "one-time initialization function for seasonPreviewData"
+                  moduleName = "PixProStats.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aywei/Desktop/CSGO/PixProStats/PixProStats/Preview%20Content/PreviewData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47">
+               </Location>
+               <Location
+                  uuid = "AF019BD0-076A-4B7E-9091-AC09FC194FE8 - 8279eccf5fbb93a0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PixProStats.seasonPreviewData.unsafeMutableAddressor : PixProStats.Season"
+                  moduleName = "PixProStats.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aywei/Desktop/CSGO/PixProStats/PixProStats/Preview%20Content/PreviewData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

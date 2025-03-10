@@ -9,7 +9,6 @@ import SwiftUI
 
 struct StatsListView: View {
     var statsList: [(String, Int)]
-    @EnvironmentObject var leagueListVM: LeagueViewModel
     
     var body: some View {
         ScrollView {

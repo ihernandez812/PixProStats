@@ -24,4 +24,22 @@ struct Playoffs: Codable {
         case alChampionship = "al_championship"
         case worldSeries = "world_series"
     }
+    
+    func getPlayoffTeams() -> Set<Int> {
+        let teams: Set<Int> = [
+            nlWildcard.teamOne,
+            nlWildcard.teamTwo,
+            alWildcard.teamOne,
+            alWildcard.teamTwo,
+            nlDivisionalOne.teamOne,
+            nlDivisionalOne.teamTwo,
+            nlDivisionalTwo.teamOne,
+            nlDivisionalTwo.teamTwo,
+            alDivisionalOne.teamOne,
+            alDivisionalOne.teamTwo,
+            alDivisionalTwo.teamOne,
+            alDivisionalTwo.teamTwo,
+            ]
+        return teams
+    }
 }

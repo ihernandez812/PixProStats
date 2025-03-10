@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct SeasonsList: View {
-    @EnvironmentObject var leaugeListVM: LeagueViewModel
+    @EnvironmentObject var leagueVM: LeagueViewModel
     
     var body: some View {
         
         //MARK Seasons List
-        let seasons: [Season] = leaugeListVM.league?.seasons ?? []
-        let teams: [Team] = leaugeListVM.league?.teams ?? []
+        let seasons: [Season] = leagueVM.league?.seasons ?? []
+        let teams: [Team] = leagueVM.league?.teams ?? []
         ForEach(seasons){
             season in
             NavigationLink(destination: SeasonView(seasonYear: season.getYear())) {
@@ -38,14 +38,14 @@ struct SeasonsList: View {
 
 
 struct SeasonsList_Previews: PreviewProvider {
-    static let leagueListViewModel : LeagueViewModel = {
-        let leagueListViewModel = LeagueViewModel()
-        leagueListViewModel.league = leaguePreviewData
-        return leagueListViewModel
+    static let leagueViewModel : LeagueViewModel = {
+        let leagueViewModel = LeagueViewModel()
+        leagueViewModel.league = leaguePreviewData
+        return leagueViewModel
     }()
     
     static var previews: some View {
         SeasonsList()
-            .environmentObject(leagueListViewModel)
+            .environmentObject(leagueViewModel)
     }
 }

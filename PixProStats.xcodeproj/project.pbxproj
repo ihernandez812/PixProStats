@@ -60,6 +60,7 @@
 		D99275F92D779B8800F19F31 /* PlayerViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = PlayerViews; sourceTree = "<group>"; };
 		D99275FA2D779BDF00F19F31 /* GameViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = GameViews; sourceTree = "<group>"; };
 		D99275FB2D779C0100F19F31 /* LeagueViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = LeagueViews; sourceTree = "<group>"; };
+		D99276022D7A654D00F19F31 /* StatsViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = StatsViews; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +94,7 @@
 		D93344B02B96CDB700EA2BF9 /* PixProStats */ = {
 			isa = PBXGroup;
 			children = (
+				D99276022D7A654D00F19F31 /* StatsViews */,
 				D99275FB2D779C0100F19F31 /* LeagueViews */,
 				D99275FA2D779BDF00F19F31 /* GameViews */,
 				D99275F92D779B8800F19F31 /* PlayerViews */,
@@ -153,6 +155,7 @@
 				D99275F92D779B8800F19F31 /* PlayerViews */,
 				D99275FA2D779BDF00F19F31 /* GameViews */,
 				D99275FB2D779C0100F19F31 /* LeagueViews */,
+				D99276022D7A654D00F19F31 /* StatsViews */,
 			);
 			name = PixProStats;
 			packageProductDependencies = (

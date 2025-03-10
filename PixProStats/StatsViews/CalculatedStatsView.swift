@@ -10,7 +10,6 @@ import SwiftUI
 
 struct CalculatedStatsView: View {
     var statsList: [(String, Double)]
-    @EnvironmentObject var leagueListVM: LeagueViewModel
     
     var body: some View {
         HStack{

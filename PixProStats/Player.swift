@@ -141,6 +141,11 @@ struct Player: Codable, Identifiable {
         return PitchingStats(id: "allTime", strikeouts: strikeouts, atBats: atBats, walks: walks, homeRuns: homeRuns, numGames: numGames, strikes: strikes, hits: hits, balls: balls, runs: runs, inningsOuts: inningsOuts, pitches: pitches, earnedRuns: earnedRuns, season: -1)
     }
     
+    func getIsHOFer() -> Bool {
+        print(self.isHof)
+        return self.isHof
+    }
+    
 }
 
 enum HandednessType: Int, Codable {

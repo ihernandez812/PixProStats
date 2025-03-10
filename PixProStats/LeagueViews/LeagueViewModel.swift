@@ -1,5 +1,5 @@
 //
-//  LeagueListViewModel.swift
+//  LeagueViewModel.swift
 //  PixProStats
 //
 //  Created by Isaiah Hernandez on 2/22/25.
@@ -7,6 +7,13 @@
 
 import Foundation
 import Combine
+
+enum LeagueSortType: String, CaseIterable, Identifiable {
+    case division
+    case conference
+    case all
+    var id: Self {self}
+}
 
 final class LeagueViewModel: ObservableObject {
     @Published var league: League?

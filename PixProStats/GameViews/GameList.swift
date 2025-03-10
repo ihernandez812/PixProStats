@@ -11,12 +11,12 @@ import SwiftUI
 struct GameList: View {
     var games: [Game] = []
     var label: String = ""
-    @EnvironmentObject var leagueListVM: LeagueViewModel
+    @EnvironmentObject var leagueVM: LeagueViewModel
     
     var body: some View {
         
         VStack{
-            let teams: [Team] = leagueListVM.league?.teams ?? []
+            let teams: [Team] = leagueVM.league?.teams ?? []
             //MARK Title
             HStack{
                 Text(label)
@@ -26,7 +26,11 @@ struct GameList: View {
                 Spacer()
                 
             }
-            .padding(.bottom)
+            .padding([.top, .bottom, .horizontal], 20)
+            .foregroundColor(Color.textColor)
+            .background(Color.rowColor)
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 0, y:5)
             
             //Mark Game List
             ScrollView {
@@ -54,14 +58,14 @@ struct GameList: View {
 
 
 struct GameList_Previews: PreviewProvider {
-    static let leagueListViewModel : LeagueViewModel = {
-        let leagueListViewModel = LeagueViewModel()
-        leagueListViewModel.league = leaguePreviewData
-        return leagueListViewModel
+    static let leagueViewModel : LeagueViewModel = {
+        let leagueViewModel = LeagueViewModel()
+        leagueViewModel.league = leaguePreviewData
+        return leagueViewModel
     }()
     
     static var previews: some View {
         GameList(games: gameListPreviewData, label: "2023 Season")
-            .environmentObject(leagueListViewModel)
+            .environmentObject(leagueViewModel)
     }
 }

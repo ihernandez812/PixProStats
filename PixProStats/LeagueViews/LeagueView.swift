@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct LeagueView: View {
-    @EnvironmentObject var leagueListVM: LeagueViewModel
+    @EnvironmentObject var leagueVM: LeagueViewModel
     
     var body: some View {
         VStack{
@@ -28,7 +28,7 @@ struct LeagueView: View {
                         
                     }
                     //MARK All Players button
-                    NavigationLink(destination: PlayerList(seasonYear: LeagueViewModel.ALL_TIME, teamId: LeagueViewModel.ALL_TIME)){
+                    NavigationLink(destination: AllPlayersView()){
                         Text("All Players")
                     }
                     //Mark All Time Teams button
@@ -60,14 +60,14 @@ struct LeagueView: View {
 
 
 struct League_Previews: PreviewProvider {
-    static let leagueListViewModel : LeagueViewModel = {
-        let leagueListViewModel = LeagueViewModel()
-        leagueListViewModel.league = leaguePreviewData
-        return leagueListViewModel
+    static let leagueViewModel : LeagueViewModel = {
+        let leagueViewModel = LeagueViewModel()
+        leagueViewModel.league = leaguePreviewData
+        return leagueViewModel
     }()
     
     static var previews: some View {
         LeagueView()
-            .environmentObject(leagueListViewModel)
+            .environmentObject(leagueViewModel)
     }
 }

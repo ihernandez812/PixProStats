@@ -7,21 +7,22 @@
 
 import SwiftUI
 
-struct TeamList: View {
+struct TeamListDivisionView: View {
     var seasonYear: Int
-    @EnvironmentObject var leagueListVM: LeagueViewModel
+    @EnvironmentObject var leagueVM: LeagueViewModel
     @State private var selectedDivisionId: String = "NL East"
     var body: some View {
         VStack{
             //MARK Teams List
-            let divisions: [Division] = leagueListVM.league?.divisions ?? []
+            let divisions: [Division] = leagueVM.league?.divisions ?? []
             ScrollView{
                 if seasonYear == LeagueViewModel.ALL_TIME {
-                    if let allTimeRecords: [Int: Record] = leagueListVM.league?.getAllTimeRecords() {
-                        let teams: [Team] = leagueListVM.league?.teams ?? []
+                    if let allTimeRecords: [Int: Record] = leagueVM.league?.getAllTimeRecords() {
+                        let teams: [Team] = leagueVM.league?.teams ?? []
                         if let selectedDivision: Division = divisions.first(where: { $0.name == selectedDivisionId}) {
                             let divisionsTeams: [Team] = teams.filter({selectedDivision.teams.contains($0.id)})
                             let orderedTeams: [Team] = divisionsTeams.sorted {
+                                //Don't have to worry about playoff teams here. No tie breaker
                                 allTimeRecords[$0.id]?.gamesWon ?? 0 > allTimeRecords[$1.id]?.gamesWon ?? 0
                             }
                             ForEach(orderedTeams){
@@ -36,17 +37,25 @@ struct TeamList: View {
                     }
                 }
                 else {
-                    if let season: Season = leagueListVM.league?.getSeasonByYear(seasonYear: seasonYear) {
-                        let teams: [Team] = leagueListVM.league?.teams ?? []
+                    if let season: Season = leagueVM.league?.getSeasonByYear(seasonYear: seasonYear) {
+                        let teams: [Team] = leagueVM.league?.teams ?? []
                         if let selectedDivision: Division = divisions.first(where: { $0.name == selectedDivisionId}) {
                             let divisionsTeams: [Team] = teams.filter({selectedDivision.teams.contains($0.id)})
-                            let orderedTeams: [Team] = divisionsTeams.sorted { season.getTeamRecordById($0.id).gamesWon > season.getTeamRecordById($1.id).gamesWon }
+                            let orderedTeams: [Team] = divisionsTeams.sorted {
+                                var teamOneWins: Int = season.getTeamRecordById($0.id).gamesWon
+                                var teamTwoWins: Int = season.getTeamRecordById($1.id).gamesWon
+                                if teamOneWins == teamTwoWins {
+                                    teamOneWins += season.getIsPlayoffTeam($0.id) ? 1 : 0
+                                    teamTwoWins += season.getIsPlayoffTeam($1.id) ? 1 : 0
+                                                
+                                }
+                                return teamOneWins > teamTwoWins
+                            }
                             ForEach(orderedTeams){
                                 team in
-                                //NavigationLink(destination: TeamView(seasonYear: season.getYear(), teamId: team.id)) {
-                                TeamRow(team: team, season: season)
-                                
-                                //}
+                                let isPlayoffTeam = season.getIsPlayoffTeam(team.id)
+                                TeamRow(team: team, season: season, isPlayoffTeam: isPlayoffTeam)
+
                                 Divider()
                                 
                             }
@@ -109,14 +118,14 @@ struct TeamList: View {
 
 
 struct TeamList_Previews: PreviewProvider {
-    static let leagueListViewModel : LeagueViewModel = {
-        let leagueListViewModel = LeagueViewModel()
-        leagueListViewModel.league = leaguePreviewData
-        return leagueListViewModel
+    static let leagueViewModel : LeagueViewModel = {
+        let leagueViewModel = LeagueViewModel()
+        leagueViewModel.league = leaguePreviewData
+        return leagueViewModel
     }()
     
     static var previews: some View {
-        TeamList(seasonYear: 2023)
-            .environmentObject(leagueListViewModel)
+        TeamListDivisionView(seasonYear: 2023)
+            .environmentObject(leagueViewModel)
     }
 }
