@@ -15,6 +15,6 @@ struct Team: Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case name, id
-        case isUserTeam = "is_user_team"
+        case isUserTeam
     }
 }

@@ -25,16 +25,16 @@ struct PitchingStats: Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case id
-        case strikeouts = "strike_outs"
-        case atBats = "at_bats"
+        case strikeouts = "strikeOuts"
+        case atBats
         case walks
-        case homeRuns = "home_runs"
-        case numGames = "num_games"
-        case strikes = "strikes"
+        case homeRuns
+        case numGames
+        case strikes
         case hits, balls, runs
-        case inningsOuts = "innings_outs"
+        case inningsOuts
         case pitches
-        case earnedRuns = "earned_runs"
+        case earnedRuns
         case season
         
     }

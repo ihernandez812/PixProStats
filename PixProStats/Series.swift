@@ -17,10 +17,11 @@ struct Series: Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case id
-        case teamOne = "team_one"
-        case teamTwo = "team_two"
-        case winner, games
-        case seriesLength = "series_length"
+        case teamOne = "team0id"
+        case teamTwo = "team1id"
+        case winner
+        case games = "fixtures"
+        case seriesLength
         case seriesType = "name"
     }
     

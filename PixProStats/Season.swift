@@ -21,11 +21,11 @@ struct Season: Codable, Identifiable {
         case id = "year"
         //case year
         case playoffs
-        case regularSeason = "regular_season"
+        case regularSeason
         case awards
-        case hofClass = "hof_class"
-        case teamSeasonPlayers = "team_season_players"
-        case teamRecords = "team_records"
+        case hofClass
+        case teamSeasonPlayers
+        case teamRecords
     }
     
     func getWorldSeriesIdsList() -> [Int]{

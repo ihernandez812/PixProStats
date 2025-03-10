@@ -31,18 +31,21 @@ struct BattingStats: Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case id
-        case strikeouts = "strike_outs"
-        case atBats = "at_bats"
+        case strikeouts = "strikeOuts"
+        case atBats
         case walks
-        case homeRuns = "home_runs"
-        case numGames = "num_games"
+        case homeRuns
+        case numGames
         case strikes, hits, balls, runs
-        case singles, doubles, triples, contact
-        case sacrificeFlys = "sacrifice_flys"
-        case stolenBases = "stolen_bases"
-        case plateAppearances = "plate_apperances"
-        case rbis
-        case hitByPitch = "hit_by_pitch"
+        case singles = "base1"
+        case doubles = "base2"
+        case triples = "base3"
+        case contact
+        case sacrificeFlys = "sacrifices"
+        case stolenBases = "stolen"
+        case plateAppearances = "plateApp"
+        case rbis = "runsBattedIn"
+        case hitByPitch
         case season
         
     }

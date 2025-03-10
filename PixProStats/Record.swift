@@ -13,8 +13,8 @@ struct Record: Codable {
 let gamesWon, gamesPlayed: Int
 
 enum CodingKeys: String, CodingKey {
-    case gamesWon = "games_won"
-    case gamesPlayed = "games_played"
+    case gamesWon
+    case gamesPlayed
 }
 
 func getFormatedPercentageRecord() -> String {
