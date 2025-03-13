@@ -84,7 +84,7 @@ struct BattingStats: Codable, Identifiable {
     
     func getAverage() -> Double {
         var result: Double = 0
-        if self.hits > 0 && self.atBats > 0 {
+        if self.hits >= 0 && self.atBats >= 0 {
             let avg: Double = Double(self.hits) / Double(self.atBats)
             result = Double(round(1000 * avg) / 1000)
         }
@@ -93,7 +93,7 @@ struct BattingStats: Codable, Identifiable {
     
     func getOnBasePercentage() -> Double {
         var result: Double = 0
-        if self.hits > 0 && self.walks > 0 && self.hitByPitch > 0 && self.atBats > 0 && self.sacrificeFlys > 0 {
+        if self.hits >= 0 && self.walks >= 0 && self.hitByPitch >= 0 && self.atBats >= 0 && self.sacrificeFlys >= 0 {
             let obp: Double = Double(self.hits + self.walks + self.hitByPitch) / Double(self.atBats + self.walks + self.hitByPitch + self.sacrificeFlys)
             result = Double(round(1000 * obp) / 1000)
         }
@@ -103,7 +103,7 @@ struct BattingStats: Codable, Identifiable {
     
     func getSluggingPercentage() -> Double {
         var result: Double = 0
-        if self.atBats > 0 && self.singles > 0 && self.doubles > 0 && self.triples > 0 && self.homeRuns > 0{
+        if self.atBats >= 0 && self.singles >= 0 && self.doubles >= 0 && self.triples >= 0 && self.homeRuns >= 0{
             let slg: Double = Double(self.singles + self.doubles * 2 + self.triples * 3 + self.homeRuns * 4) / Double(self.atBats)
             result = Double(round(1000 * slg) / 1000)
         }
@@ -114,7 +114,7 @@ struct BattingStats: Codable, Identifiable {
     func getOnBasePlusSlugging() -> Double {
         var result: Double = 0
         let ops: Double = self.getOnBasePercentage() + self.getSluggingPercentage()
-        if ops > 0 {
+        if ops >= 0 {
             result = Double(round(1000 * ops) / 1000)
         }
         return result

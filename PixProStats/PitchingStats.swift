@@ -68,7 +68,7 @@ struct PitchingStats: Codable, Identifiable {
     
     func getAverage() -> Double {
         var result: Double = 0
-        if self.atBats > 0 && self.hits > 0 {
+        if self.atBats >= 0 && self.hits >= 0 {
             let avg: Double = Double(self.hits) / Double(self.atBats)
             result = Double(round(1000 * avg) / 1000)
         }
@@ -77,7 +77,7 @@ struct PitchingStats: Codable, Identifiable {
     
     func getEra() -> Double {
         var result: Double = 0
-        if self.inningsOuts > 0 && self.earnedRuns > 0 {
+        if self.inningsOuts >= 0 && self.earnedRuns >= 0 {
             let inningsPitched: Double = Double(self.inningsOuts) / 3
             let era: Double = (Double(self.earnedRuns) / inningsPitched) * 9
             result = Double(round(1000 * era) / 1000)
@@ -87,7 +87,7 @@ struct PitchingStats: Codable, Identifiable {
     
     func calculateStrikeoutsPerInning() -> Double {
         var result: Double = 0
-        if self.inningsOuts > 0 && self.strikeouts > 0 {
+        if self.inningsOuts >= 0 && self.strikeouts >= 0 {
             let inningsPitched: Double = Double(self.inningsOuts) / 3
             let strikeoutsPerInning: Double = Double(self.strikeouts) / inningsPitched
             result =  Double(round(1000 * strikeoutsPerInning) / 1000)
@@ -97,7 +97,8 @@ struct PitchingStats: Codable, Identifiable {
     
     func getWHIP() -> Double {
         var result: Double = 0
-        if self.inningsOuts > 0 && self.walks > 0 && self.hits > 0 {
+        if self.inningsOuts >= 0 && self.walks >= 0 && self.hits >= 0 {
+            print("it is greater than zero")
             let inningsPitched: Double = Double(self.inningsOuts) / 3
             let walksPlusHits: Double = Double(self.walks + self.hits)
             let whip: Double = walksPlusHits / inningsPitched

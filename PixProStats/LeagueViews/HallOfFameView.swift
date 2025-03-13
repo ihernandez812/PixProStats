@@ -51,7 +51,7 @@ struct HallOfFameView: View {
                     else{
                         let players: [Player] = league.players.filter { playerIds.contains($0.id) }
                         ForEach(players) { player in
-                            PlayerRow(player: player)
+                            PlayerRow(player: player, overall: Float(selectedOption))
                             
                             Divider()
                         }

@@ -38,7 +38,8 @@ struct AwardsView: View {
                             NavigationLink(destination: {
                                 PlayerInfo(playerId: cyYoung, seasonYear: seasonYear)
                             }){
-                                PlayerRow(player: player)
+                                let overall: Float = player.getOverallByYear(forSeason: String(seasonYear))
+                                PlayerRow(player: player, overall: overall)
                             }
                             Divider()
                         }
@@ -53,7 +54,8 @@ struct AwardsView: View {
                             NavigationLink(destination: {
                                 PlayerInfo(playerId: mvp, seasonYear: seasonYear)
                             }){
-                                PlayerRow(player: player)
+                                let overall: Float = player.getOverallByYear(forSeason: String(seasonYear))
+                                PlayerRow(player: player, overall: overall)
                             }
                             Divider()
                         }
@@ -68,7 +70,8 @@ struct AwardsView: View {
                             NavigationLink(destination: {
                                 PlayerInfo(playerId: battingTitle, seasonYear: seasonYear)
                             }){
-                                PlayerRow(player: player)
+                                let overall: Float = player.getOverallByYear(forSeason: String(seasonYear))
+                                PlayerRow(player: player, overall: overall)
                             }
                             Divider()
                         }
@@ -83,7 +86,8 @@ struct AwardsView: View {
                             NavigationLink(destination: {
                                 PlayerInfo(playerId: homeRunLeader, seasonYear: seasonYear)
                             }){
-                                PlayerRow(player: player)
+                                let overall: Float = player.getOverallByYear(forSeason: String(seasonYear))
+                                PlayerRow(player: player, overall: overall)
                             }
                             Divider()
                         }
