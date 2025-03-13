@@ -10,6 +10,8 @@ import Foundation
 // MARK: - Player
 struct Player: Codable, Identifiable {
     let id, name: String
+    let age: Int
+    let overalls: [String: Float]
     let handedness: HandednessType.RawValue
     let position: PositionType.RawValue
     let pitcherType: PitcherType.RawValue
@@ -19,7 +21,7 @@ struct Player: Codable, Identifiable {
     let isHof: Bool
     
     enum CodingKeys: String, CodingKey {
-        case id, name
+        case id, name, age, overalls
         case position = "fieldingPosition"
         case handedness = "handed"
         case pitcherType
@@ -143,10 +145,11 @@ struct Player: Codable, Identifiable {
         return PitchingStats(id: "allTime", strikeouts: strikeouts, atBats: atBats, walks: walks, homeRuns: homeRuns, numGames: numGames, strikes: strikes, hits: hits, balls: balls, runs: runs, inningsOuts: inningsOuts, pitches: pitches, earnedRuns: earnedRuns, season: -1)
     }
     
-    func getIsHOFer() -> Bool {
-        print(self.isHof)
-        return self.isHof
+    func getOverallByYear(forSeason: String) -> Float {
+        print(self.overalls[forSeason] ?? -1)
+        return self.overalls[forSeason] ?? -1
     }
+    
     
 }
 

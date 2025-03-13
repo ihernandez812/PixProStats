@@ -37,7 +37,7 @@ struct League: Codable {
         for season in seasons {
             let teamIdString = String(teamId)
             let teamSeasonPlayers: [String] = season.teamSeasonPlayers[teamIdString] ?? []
-            teamPlayers.append(contentsOf: teamSeasonPlayers)
+            teamPlayers = Array(Set(teamPlayers + teamSeasonPlayers))
         }
         
         return teamPlayers

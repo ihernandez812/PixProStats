@@ -22,7 +22,7 @@ struct PlayerList: View {
                         let playerId: String = player.id
                         
                         NavigationLink(destination: PlayerInfo(playerId: playerId, seasonYear: seasonYear, teamId: teamId)){
-                            PlayerRow(player: player)
+                            PlayerRow(player: player, overall: Float(LeagueViewModel.ALL_TIME))
                         }
                         Divider()
                     }
@@ -33,7 +33,7 @@ struct PlayerList: View {
                             let playerId = allTimeTeamPlayers[i]
                             if let player: Player = leagueVM.league?.getPlayerById(playerId: playerId) {
                                 NavigationLink(destination: PlayerInfo(playerId: playerId, seasonYear: seasonYear, teamId: teamId)){
-                                    PlayerRow(player: player)
+                                    PlayerRow(player: player, overall: Float(LeagueViewModel.ALL_TIME))
                                 }
                                 Divider()
                             }
@@ -47,7 +47,8 @@ struct PlayerList: View {
                                 let playerId = teamSeasonPlayers[i]
                                 if let player: Player = leagueVM.league?.getPlayerById(playerId: playerId) {
                                     NavigationLink(destination: PlayerInfo(playerId: playerId, seasonYear: seasonYear, teamId: teamId)){
-                                        PlayerRow(player: player)
+                                        let overall: Float = player.getOverallByYear(forSeason: String(seasonYear))
+                                        PlayerRow(player: player, overall: overall)
                                     }
                                     Divider()
                                 }

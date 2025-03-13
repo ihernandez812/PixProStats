@@ -26,7 +26,7 @@ final class LeagueViewModel: ObservableObject {
     
     func getLeague() {
         
-        guard let url = URL(string: "https://raw.githubusercontent.com/ihernandez812/PixProBaseballStats/refs/heads/CLEAN_UP/pix_pro_stats/src/seasons/league.json") else{
+        guard let url = URL(string: "https://raw.githubusercontent.com/ihernandez812/PixProBaseballStats/refs/heads/main/pix_pro_stats/src/seasons/league.json") else{
             print("Invalid URL")
             return
         }

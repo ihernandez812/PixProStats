@@ -12,6 +12,7 @@ import SwiftUIFontIcon
 
 struct PlayerRow: View {
     var player: Player
+    var overall: Float
     var body: some View {
         HStack(spacing: 10) {
             VStack(alignment: .leading, spacing: 2){
@@ -21,6 +22,11 @@ struct PlayerRow: View {
                         .font(.headline)
                         .bold()
                         .lineLimit(1)
+                        .padding(.horizontal,5)
+                    let age: Int = player.age
+                    Text("Age: \(age)")
+                        .font(.footnote)
+                        .opacity(0.8)
                     if(player.isHof){
                         VStack(alignment: .leading, spacing: 2){
                             //MARK HOF Badge
@@ -35,6 +41,7 @@ struct PlayerRow: View {
                             
                         }
                     }
+                    
                 }
                 HStack {
                     let fullPosition: String = player.getFullPosition()
@@ -42,10 +49,12 @@ struct PlayerRow: View {
                         .font(.footnote)
                         .opacity(0.7)
                     
-                    let handedness = player.getHandedness()
-                    Text(String(handedness))
+                    let handedness: String = player.getHandedness()
+                    Text(handedness)
                         .font(.caption2)
                         .opacity(0.7)
+                    
+                    
                 }
                 
                 
@@ -54,6 +63,17 @@ struct PlayerRow: View {
             }
             
             Spacer()
+            
+            
+            if overall != Float(LeagueViewModel.ALL_TIME) {
+                let formattedOverall: String = String(format: "%.1f", overall)
+                Text(formattedOverall)
+                    .padding(.horizontal)
+                    .font(.subheadline)
+                    .bold()
+                    .foregroundColor(Color.textColor)
+            }
+            
             
             
         }
@@ -65,6 +85,6 @@ struct PlayerRow: View {
 
 struct PlayerRow_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerRow(player: playerPreviewData)
+        PlayerRow(player: playerPreviewData, overall: 99.1)
     }
 }

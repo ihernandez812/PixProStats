@@ -24,7 +24,9 @@ struct PlayerInfo: View {
             
             //MARK Player Row
             if let player: Player = self.leagueVM.league?.getPlayerById(playerId: self.playerId) {
-                PlayerRow(player: player)
+                let seasonAsString = String(self.seasonYear ?? 0)
+                let overvall: Float = player.getOverallByYear(forSeason: seasonAsString)
+                PlayerRow(player: player, overall: overvall)
                     .padding()
                     .background(Color.rowColor)
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
@@ -56,7 +58,7 @@ struct PlayerInfo_Previews: PreviewProvider {
     }()
     
     static var previews: some View {
-        PlayerInfo(playerId: "mpYQS49IkiYBhrjt")
+        PlayerInfo(playerId: "5YLypGrIuqyyop2x")
             .environmentObject(leagueViewModel)
     }
 }
