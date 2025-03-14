@@ -18,6 +18,7 @@ enum LeagueSortType: String, CaseIterable, Identifiable {
 final class LeagueViewModel: ObservableObject {
     @Published var league: League?
     static var ALL_TIME: Int = -1
+    static var START_STATE: Int = 0
     private var cancellables: Set<AnyCancellable> = []
     
     init() {

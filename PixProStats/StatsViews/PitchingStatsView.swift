@@ -13,7 +13,7 @@ struct PitchingStatsView: View {
     var seasonYear: Int?
     var teamId: Int?
     @EnvironmentObject var leagueVM: LeagueViewModel
-    @State private var selectedOption = LeagueViewModel.ALL_TIME
+    @State private var selectedOption = LeagueViewModel.START_STATE
     
     var body: some View {
         let avaiblablePitchingStats: [PitchingStats] = leagueVM.league?.getPlayerPitchingStats(player: player, seasonYear: seasonYear, teamId: teamId) ?? []
@@ -23,11 +23,14 @@ struct PitchingStatsView: View {
                 Menu {
                     //MARK Picker for stats year
                     Picker("Season:", selection: $selectedOption) {
-                        ForEach(avaiblablePitchingStats) {
-                            pitchingStats in
-                            Text(String(pitchingStats.season)).tag(pitchingStats.season)
+                        ForEach(avaiblablePitchingStats.indices, id: \.self) {
+                            i in
+                            let pitchingStats: PitchingStats = player.pitchingStats[i]
+                            Text(String(pitchingStats.season)).tag(i)
                         }
-                        Text("All Time").tag(LeagueViewModel.ALL_TIME)
+                        if seasonYear ?? -1 == LeagueViewModel.ALL_TIME {
+                            Text("All Time").tag(LeagueViewModel.ALL_TIME)
+                        }
                     }
                 } label: {
                     pitchingStatsLabel
@@ -35,8 +38,9 @@ struct PitchingStatsView: View {
                 }
             }
             
+            let selectedYear = (selectedOption != LeagueViewModel.ALL_TIME) ? avaiblablePitchingStats[selectedOption].season : LeagueViewModel.ALL_TIME
             
-            let currPitchingStats: PitchingStats = selectedOption > 0 ? player.getPitchingStats(forSeason: selectedOption) :
+            let currPitchingStats: PitchingStats = selectedYear > LeagueViewModel.START_STATE ? player.getPitchingStats(forSeason: selectedYear) :
             player.getPitchingStatsSpan(seasonsToLookFor: availableSeasons)
             
             //MARK Calculated Stats
@@ -60,7 +64,8 @@ struct PitchingStatsView: View {
     var pitchingStatsLabel: some View {
         HStack {
             
-            let seasonString: String = selectedOption > 0 ? String(selectedOption) : "All Time"
+            let avaiblablePitchingStats: [PitchingStats] = leagueVM.league?.getPlayerPitchingStats(player: player, seasonYear: seasonYear, teamId: teamId) ?? []
+            let seasonString: String = (selectedOption != LeagueViewModel.ALL_TIME) ? String(avaiblablePitchingStats[selectedOption].season) : "All Time"
             
             Text("Pitching Stats: " + seasonString)
             Spacer()

@@ -11,7 +11,9 @@ import SwiftUI
 struct TeamListConferenceView: View {
     var seasonYear: Int
     @EnvironmentObject var leagueVM: LeagueViewModel
-    @State private var selectedConferenceId: String = "NL"
+    @State private var selectedConferenceId = LeagueViewModel.START_STATE
+    
+    
     var body: some View {
         VStack{
             //MARK Teams List
@@ -20,7 +22,7 @@ struct TeamListConferenceView: View {
                 if seasonYear == LeagueViewModel.ALL_TIME {
                     if let allTimeRecords: [Int: Record] = leagueVM.league?.getAllTimeRecords() {
                         let teams: [Team] = leagueVM.league?.teams ?? []
-                        if let selectedConference: Conference = conferences.first(where: { $0.id == selectedConferenceId}) {
+                        let selectedConference: Conference = conferences[selectedConferenceId]
                             let conferenceTeams: [Team] = teams.filter({
                                 for division in selectedConference.divisions {
                                     if division.teams.contains($0.id){
@@ -41,12 +43,12 @@ struct TeamListConferenceView: View {
                             }
                             
                         }
-                    }
+                    
                 }
                 else {
                     if let season: Season = leagueVM.league?.getSeasonByYear(seasonYear: seasonYear) {
                         let teams: [Team] = leagueVM.league?.teams ?? []
-                        if let selectedConference: Conference = conferences.first(where: { $0.id == selectedConferenceId}) {
+                        let selectedConference: Conference = conferences[selectedConferenceId]
                             let conferenceTeams: [Team] = teams.filter({
                                 for division in selectedConference.divisions {
                                     if division.teams.contains($0.id){
@@ -74,7 +76,7 @@ struct TeamListConferenceView: View {
                                 
                             }
                             
-                        }
+                        
                     }
                 }
                 
@@ -96,8 +98,9 @@ struct TeamListConferenceView: View {
                     }
                 }))
             TabView(selection: $selectedConferenceId) {
-                ForEach(conferences) { conference in
-                    Text(selectedConferenceId).tag(conference.id)
+                ForEach(conferences.indices, id: \.self) { i in
+                    let conference = conferences[i]
+                    Text(conference.id).tag(i)
                         .font(.caption)
                         .opacity(0.7)
                         .padding(.top, 15)
@@ -116,7 +119,7 @@ struct TeamListConferenceView: View {
     
     func handleDragEnded(_ direction: Int, conferences: [Conference]) {
         withAnimation {
-            var conferenceIndex = conferences.firstIndex(where: { $0.id == selectedConferenceId }) ?? 0
+            var conferenceIndex = selectedConferenceId
             conferenceIndex += direction
             if conferenceIndex < 0 {
                 conferenceIndex = conferences.count - 1
@@ -125,7 +128,7 @@ struct TeamListConferenceView: View {
                 conferenceIndex = 0
                 
             }
-            selectedConferenceId = conferences[conferenceIndex].id
+            selectedConferenceId = conferenceIndex
         }
     }
 }

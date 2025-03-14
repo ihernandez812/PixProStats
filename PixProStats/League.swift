@@ -1,6 +1,8 @@
 import Foundation
 
 // MARK: - League
+
+
 struct League: Codable {
     let divisions: [Division]
     let teams: [Team]
@@ -73,8 +75,8 @@ struct League: Codable {
             let conference = Conference(id: id, divisions: divisions)
             conferences.append(conference)
         }
-        
-        return conferences
+        //Need this to be ordered so we swipe correctly
+        return conferences.sorted { $0.id < $1.id }
     }
     
     

@@ -10,7 +10,7 @@ import SwiftUI
 struct TeamListDivisionView: View {
     var seasonYear: Int
     @EnvironmentObject var leagueVM: LeagueViewModel
-    @State private var selectedDivisionId: String = "NL East"
+    @State private var selectedDivisionId = LeagueViewModel.START_STATE
     var body: some View {
         VStack{
             //MARK Teams List
@@ -19,48 +19,50 @@ struct TeamListDivisionView: View {
                 if seasonYear == LeagueViewModel.ALL_TIME {
                     if let allTimeRecords: [Int: Record] = leagueVM.league?.getAllTimeRecords() {
                         let teams: [Team] = leagueVM.league?.teams ?? []
-                        if let selectedDivision: Division = divisions.first(where: { $0.name == selectedDivisionId}) {
-                            let divisionsTeams: [Team] = teams.filter({selectedDivision.teams.contains($0.id)})
-                            let orderedTeams: [Team] = divisionsTeams.sorted {
-                                //Don't have to worry about playoff teams here. No tie breaker
-                                allTimeRecords[$0.id]?.gamesWon ?? 0 > allTimeRecords[$1.id]?.gamesWon ?? 0
-                            }
-                            ForEach(orderedTeams){
-                                team in
-                                TeamRow(team: team, record: allTimeRecords[team.id])
-                                
-                                Divider()
-                                
-                            }
+                        let selectedDivision: Division = divisions[selectedDivisionId]
+                        let divisionsTeams: [Team] = teams.filter({selectedDivision.teams.contains($0.id)})
+                        
+                        let orderedTeams: [Team] = divisionsTeams.sorted {
+                            //Don't have to worry about playoff teams here. No tie breaker
+                            allTimeRecords[$0.id]?.gamesWon ?? 0 > allTimeRecords[$1.id]?.gamesWon ?? 0
+                        }
+                        ForEach(orderedTeams){
+                            team in
+                            TeamRow(team: team, record: allTimeRecords[team.id])
+                            
+                            Divider()
                             
                         }
+                        
+                        
                     }
                 }
                 else {
                     if let season: Season = leagueVM.league?.getSeasonByYear(seasonYear: seasonYear) {
                         let teams: [Team] = leagueVM.league?.teams ?? []
-                        if let selectedDivision: Division = divisions.first(where: { $0.name == selectedDivisionId}) {
-                            let divisionsTeams: [Team] = teams.filter({selectedDivision.teams.contains($0.id)})
-                            let orderedTeams: [Team] = divisionsTeams.sorted {
-                                var teamOneWins: Int = season.getTeamRecordById($0.id).gamesWon
-                                var teamTwoWins: Int = season.getTeamRecordById($1.id).gamesWon
-                                if teamOneWins == teamTwoWins {
-                                    teamOneWins += season.getIsPlayoffTeam($0.id) ? 1 : 0
-                                    teamTwoWins += season.getIsPlayoffTeam($1.id) ? 1 : 0
-                                                
-                                }
-                                return teamOneWins > teamTwoWins
-                            }
-                            ForEach(orderedTeams){
-                                team in
-                                let isPlayoffTeam = season.getIsPlayoffTeam(team.id)
-                                TeamRow(team: team, season: season, isPlayoffTeam: isPlayoffTeam)
-
-                                Divider()
+                        let selectedDivision: Division = divisions[selectedDivisionId]
+                        let divisionsTeams: [Team] = teams.filter({selectedDivision.teams.contains($0.id)})
+                        
+                        let orderedTeams: [Team] = divisionsTeams.sorted {
+                            var teamOneWins: Int = season.getTeamRecordById($0.id).gamesWon
+                            var teamTwoWins: Int = season.getTeamRecordById($1.id).gamesWon
+                            if teamOneWins == teamTwoWins {
+                                teamOneWins += season.getIsPlayoffTeam($0.id) ? 1 : 0
+                                teamTwoWins += season.getIsPlayoffTeam($1.id) ? 1 : 0
                                 
                             }
+                            return teamOneWins > teamTwoWins
+                        }
+                        ForEach(orderedTeams){
+                            team in
+                            let isPlayoffTeam = season.getIsPlayoffTeam(team.id)
+                            TeamRow(team: team, season: season, isPlayoffTeam: isPlayoffTeam)
+                            
+                            Divider()
                             
                         }
+                        
+                        
                     }
                 }
                 
@@ -82,8 +84,9 @@ struct TeamListDivisionView: View {
                     }
                 }))
             TabView(selection: $selectedDivisionId) {
-                ForEach(divisions) { division in
-                    Text(selectedDivisionId).tag(division.name)
+                ForEach(divisions.indices, id: \.self) { i in
+                    let division = divisions[i]
+                    Text(division.name).tag(i)
                         .font(.caption)
                         .opacity(0.7)
                         .padding(.top, 15)
@@ -102,16 +105,14 @@ struct TeamListDivisionView: View {
     
     func handleDragEnded(_ direction: Int, divisions: [Division]) {
         withAnimation {
-            var divisionIndex = divisions.firstIndex(where: { $0.name == selectedDivisionId }) ?? 0
-            divisionIndex += direction
-            if divisionIndex < 0 {
-                divisionIndex = divisions.count - 1
+            selectedDivisionId += direction
+            if selectedDivisionId < 0 {
+                selectedDivisionId = divisions.count - 1
             }
-            else if divisionIndex >= divisions.count {
-                divisionIndex = 0
+            else if selectedDivisionId >= divisions.count {
+                selectedDivisionId = 0
                 
             }
-            selectedDivisionId = divisions[divisionIndex].name
         }
     }
 }

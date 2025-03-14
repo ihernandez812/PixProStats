@@ -98,7 +98,6 @@ struct PitchingStats: Codable, Identifiable {
     func getWHIP() -> Double {
         var result: Double = 0
         if self.inningsOuts >= 0 && self.walks >= 0 && self.hits >= 0 {
-            print("it is greater than zero")
             let inningsPitched: Double = Double(self.inningsOuts) / 3
             let walksPlusHits: Double = Double(self.walks + self.hits)
             let whip: Double = walksPlusHits / inningsPitched

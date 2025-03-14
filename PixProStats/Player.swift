@@ -47,6 +47,7 @@ struct Player: Codable, Identifiable {
     }
     
     func getBattingStats(forSeason: Int) -> BattingStats {
+        print(forSeason)
         var foundBattingStats: BattingStats!
         for battingStatsYear in self.battingStats {
             if battingStatsYear.season == forSeason{
@@ -146,7 +147,6 @@ struct Player: Codable, Identifiable {
     }
     
     func getOverallByYear(forSeason: String) -> Float {
-        print(self.overalls[forSeason] ?? -1)
         return self.overalls[forSeason] ?? -1
     }
     
