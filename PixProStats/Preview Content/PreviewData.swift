@@ -12,7 +12,7 @@ var pitchingStatsPreviewData = PitchingStats(id: "fdsatery", strikeouts: 32, atB
 var battingStatsPreviewData = BattingStats(id: "fjkl-fd", strikeouts: 20, atBats: 150, walks: 10, homeRuns: 43, numGames: 162, strikes: 0, hits: 92, balls: 0, runs: 100, singles: 40, doubles: 40, triples: 12, contact: 150, sacrificeFlys: 0, stolenBases: 0, plateAppearances: 150, rbis: 150, hitByPitch: 0, season: 2023)
 var battingStatsPreviewData2024 = BattingStats(id: "fjkl-fdf", strikeouts: 24, atBats: 69, walks: 12, homeRuns: 69, numGames: 162, strikes: 0, hits: 92, balls: 0, runs: 100, singles: 40, doubles: 40, triples: 12, contact: 150, sacrificeFlys: 0, stolenBases: 0, plateAppearances: 150, rbis: 150, hitByPitch: 0, season: 2024)
 
-var playerPreviewData = Player(id: "dfasfsafa", name: "Bryce Harper", age: 32, overalls: ["2023": 99.0], handedness: HandednessType.LEFT.rawValue, position: PositionType.PITCHER.rawValue, pitcherType: PitcherType.STARTER.rawValue, designatedHitter: false, pitchingStats: [pitchingStatsPreviewData], battingStats: [battingStatsPreviewData, battingStatsPreviewData2024], isHof: true)
+var playerPreviewData = Player(id: "dfasfsafa", name: "Bryce Harper", age: 32, overalls: ["2023": 99.0], handedness: HandednessType.LEFT.rawValue, position: PositionType.PITCHER.rawValue, pitcherType: PitcherType.STARTER.rawValue, pitchTypes: [PitchTypes.FBSinker, PitchTypes.CUCircle, PitchTypes.CB], designatedHitter: false, pitchingStats: [pitchingStatsPreviewData], battingStats: [battingStatsPreviewData, battingStatsPreviewData2024], isHof: true)
 
 var playerListPreviewData = [Player](repeating: playerPreviewData, count: 3)
 

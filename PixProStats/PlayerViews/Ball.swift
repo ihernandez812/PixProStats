@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct Ball: View {
+    let color: Color
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Circle()
+            .fill(color)
+            .frame(width: 7, height: 7)
     }
 }
 
 #Preview {
-    Ball()
+    Ball(color: .red)
 }

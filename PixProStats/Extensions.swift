@@ -13,6 +13,9 @@ extension Color {
     static let iconColor = Color("Icon")
     static let textColor = Color("Text")
     static let rowColor = Color("Row")
+    static let fastballColor = Color("Fastball")
+    static let curveballColor = Color("Curveball")
+    static let changeupColor = Color("Changeup")
     static let systemBackground = Color(uiColor: .systemBackground)
     
     public init(hex: String, opacity: Double = 1.0) {
