@@ -46,9 +46,7 @@ struct PlayerList: View {
                             ForEach(teamSeasonPlayers.indices, id: \.self){ i in
                                 let playerId = teamSeasonPlayers[i]
                                 if let player: Player = leagueVM.league?.getPlayerById(playerId: playerId) {
-                                    //I know the team is not all time but we are only looking for a specific season
-                                    //Since this is a by season thing
-                                    NavigationLink(destination: PlayerInfo(playerId: playerId, seasonYear: seasonYear, teamId: LeagueViewModel.ALL_TIME)){
+                                    NavigationLink(destination: PlayerInfo(playerId: playerId, seasonYear: seasonYear, teamId: teamId)){
                                         let overall: Float = player.getOverallByYear(forSeason: String(seasonYear))
                                         PlayerRow(player: player, overall: overall)
                                     }

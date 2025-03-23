@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - Player
 struct Player: Codable, Identifiable {
@@ -15,6 +16,7 @@ struct Player: Codable, Identifiable {
     let handedness: HandednessType.RawValue
     let position: PositionType.RawValue
     let pitcherType: PitcherType.RawValue
+    let pitchTypes: [PitchTypes]
     let designatedHitter: Bool
     let pitchingStats: [PitchingStats]
     let battingStats: [BattingStats]
@@ -25,6 +27,7 @@ struct Player: Codable, Identifiable {
         case position = "fieldingPosition"
         case handedness = "handed"
         case pitcherType
+        case pitchTypes
         case designatedHitter
         case pitchingStats
         case battingStats
@@ -47,7 +50,6 @@ struct Player: Codable, Identifiable {
     }
     
     func getBattingStats(forSeason: Int) -> BattingStats {
-        print(forSeason)
         var foundBattingStats: BattingStats!
         for battingStatsYear in self.battingStats {
             if battingStatsYear.season == forSeason{
@@ -227,4 +229,63 @@ enum PitcherType: Int, Codable {
             return "N/A"
         }
     }
+}
+
+
+enum PitchTypes: String, Codable {
+    case FBFourSeam
+    case FBTwoSeam
+    case FBSinker
+    case FBCutter
+    case CB
+    case CBScrewball
+    case CBSweeping
+    case CBTwelveSix
+    case CU
+    case CUCircle
+    case CUKnuckleBall
+    
+    var pitchColor: Color {
+        switch self {
+            case .FBFourSeam, .FBTwoSeam, .FBSinker, .FBCutter:
+                return Color.fastballColor
+            case .CB, .CBScrewball, .CBSweeping, .CBTwelveSix:
+                return Color.curveballColor
+            case .CU, .CUCircle, .CUKnuckleBall:
+                return Color.changeupColor
+        }
+    }
+    
+    //Needs to take handedness into account
+    static func pitchHorizontalCount(direction: Int, handedness: Int, pitchType: PitchTypes) -> Int {
+        //Direction and handedness are either -1 or 1 for left and right respectively
+        //So if we multiply them and it equal 1 it is the same side
+        switch pitchType {
+            case .FBFourSeam, .CUKnuckleBall, .CU, .CBTwelveSix:
+                return 0
+            case .FBTwoSeam, .FBSinker, .CBScrewball, .CUCircle:
+                return (handedness * direction == 1) ? 1 : 0
+            case .CB, .FBCutter:
+                return (handedness * direction == 1) ? 0 : 1
+            case .CBSweeping:
+                return (handedness * direction == 1) ? 0 : 2
+
+            }
+    }
+    
+    static func pitchVerticalCount(pitchType: PitchTypes) -> Int {
+        //No pitch goes up so we only need to know how
+        //many times it goes down
+        switch pitchType {
+            case .FBFourSeam, .FBTwoSeam, .FBCutter:
+                return 0
+            case .CBSweeping, .CUKnuckleBall:
+                return 0
+            case .FBSinker, .CBScrewball, .CUCircle:
+                return 1
+            case .CBTwelveSix, .CB, .CU:
+                return 2
+        }
+    }
+    
 }

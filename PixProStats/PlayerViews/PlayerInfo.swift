@@ -26,7 +26,7 @@ struct PlayerInfo: View {
             if let player: Player = self.leagueVM.league?.getPlayerById(playerId: self.playerId) {
                 let seasonAsString = String(self.seasonYear ?? 0)
                 let overvall: Float = player.getOverallByYear(forSeason: seasonAsString)
-                PlayerRow(player: player, overall: overvall)
+                PlayerRow(player: player, overall: overvall, showPitchTypes: true)
                     .padding()
                     .background(Color.rowColor)
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))

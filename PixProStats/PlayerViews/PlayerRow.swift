@@ -13,6 +13,7 @@ import SwiftUIFontIcon
 struct PlayerRow: View {
     var player: Player
     var overall: Float
+    var showPitchTypes: Bool = false
     var body: some View {
         HStack(spacing: 10) {
             VStack(alignment: .leading, spacing: 2){
@@ -54,6 +55,9 @@ struct PlayerRow: View {
                         .font(.caption2)
                         .opacity(0.7)
                     
+                    if showPitchTypes {
+                        PitchView(player: player)
+                    }
                     
                 }
                 
