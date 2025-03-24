@@ -19,12 +19,7 @@ struct PlayerList: View {
                 if seasonYear == LeagueViewModel.ALL_TIME && teamId == LeagueViewModel.ALL_TIME {
                     let allPlayers = leagueVM.league?.players ?? []
                     let sortedPlayers = allPlayers.sorted { (player1, player2) -> Bool in
-                        if(player1.position == player2.position){
-                            return player1.pitcherType < player2.pitcherType
-                        }
-                        else{
-                            return player1.position < player2.position
-                        }
+                        return sortPlayers(p1: player1, p2: player2, seasonYear: LeagueViewModel.ALL_TIME)
                     }
                     ForEach(sortedPlayers){ player in
                         let playerId: String = player.id
@@ -38,12 +33,7 @@ struct PlayerList: View {
                 else if seasonYear == LeagueViewModel.ALL_TIME  && teamId != LeagueViewModel.ALL_TIME {
                     if let allTimeTeamPlayers: Set<Player> = leagueVM.league?.getAllTimeTeamPlayers(teamId: teamId) {
                         let sortedPlayers = allTimeTeamPlayers.sorted { (player1, player2) -> Bool in
-                            if(player1.position == player2.position){
-                                return player1.pitcherType < player2.pitcherType
-                            }
-                            else{
-                                return player1.position < player2.position
-                            }
+                            return sortPlayers(p1: player1, p2: player2, seasonYear: LeagueViewModel.ALL_TIME)
                         }
                         ForEach(sortedPlayers) { player in
                             NavigationLink(destination: PlayerInfo(playerId: player.id, seasonYear: seasonYear, teamId: teamId)){
@@ -60,12 +50,7 @@ struct PlayerList: View {
                         if let teamSeasonPlayersIds: [String] = season.teamSeasonPlayers[String(teamId)] {
                             let teamSeasonPlayers = leagueVM.league?.getPlayersByIds(playerIds: teamSeasonPlayersIds) ?? []
                             let sortedPlayers = teamSeasonPlayers.sorted { (player1, player2) -> Bool in
-                                if(player1.position == player2.position){
-                                    return player1.pitcherType < player2.pitcherType
-                                }
-                                else{
-                                    return player1.position < player2.position
-                                }
+                                return sortPlayers(p1: player1, p2: player2, seasonYear: season.getYear())
                             }
                             ForEach(sortedPlayers){ player in
                                 NavigationLink(destination: PlayerInfo(playerId: player.id, seasonYear: seasonYear, teamId: teamId)){
@@ -90,6 +75,20 @@ struct PlayerList: View {
         
     }
     
+    func sortPlayers(p1: Player, p2: Player, seasonYear: Int) -> Bool {
+        var res : Bool = p1.position < p2.position
+        if p1.position == p2.position {
+            res = p1.pitcherType < p2.pitcherType
+            if p1.pitcherType == p2.pitcherType && seasonYear != LeagueViewModel.ALL_TIME {
+                let seasonString: String = String(seasonYear)
+                let p1Overall: Float = p1.overalls[seasonString] ?? 0
+                let p2Overall: Float = p2.overalls[seasonString] ?? 0
+                res = p1Overall > p2Overall
+            }
+        }
+        return res
+       
+    }
 }
 
 
