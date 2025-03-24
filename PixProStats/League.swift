@@ -34,12 +34,26 @@ struct League: Codable {
         return self.players[0]
     }
     
-    func getAllTimeTeamPlayers(teamId: Int) -> [String]{
-        var teamPlayers: [String] = []
+    func getPlayersByIds(playerIds: [String]) -> [Player] {
+        var players: [Player] = []
+        for playerId in playerIds {
+            let player = self.getPlayerById(playerId: playerId)
+            players.append(player)
+        }
+        return players
+    }
+    
+    func getAllTimeTeamPlayers(teamId: Int) -> Set<Player>{
+        var teamPlayers: Set<Player> = []
         for season in seasons {
             let teamIdString = String(teamId)
             let teamSeasonPlayers: [String] = season.teamSeasonPlayers[teamIdString] ?? []
-            teamPlayers = Array(Set(teamPlayers + teamSeasonPlayers))
+            for playerId in teamSeasonPlayers {
+                let player = self.getPlayerById(playerId: playerId)
+                teamPlayers.insert(player)
+                
+            }
+            
         }
         
         return teamPlayers
