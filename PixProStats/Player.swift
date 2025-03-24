@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 // MARK: - Player
-struct Player: Codable, Identifiable {
+struct Player: Codable, Identifiable, Hashable {
     let id, name: String
     let age: Int
     let overalls: [String: Float]
@@ -32,6 +32,14 @@ struct Player: Codable, Identifiable {
         case pitchingStats
         case battingStats
         case isHof = "is_hof"
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: Player, rhs: Player) -> Bool {
+        return lhs.id == rhs.id
     }
     
     func getFullPosition() -> String {
